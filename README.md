@@ -3,5 +3,8 @@
 # STM32F401CCUx_PA0ButtonHandler
 STM32F401CCUx_PA0ButtonHandler program.
 
+## Schematic
+![image](https://github.com/mytechnotalent/STM32F401CCUx_PA0ButtonHandler/blob/main/STM32F401CCU6.jpg?raw=true)
+
 ## License
 [MIT License](https://github.com/mytechnotalent/STM32F401CCUx_PA0ButtonHandler/blob/main/LICENSE)
