@@ -26,8 +26,7 @@
                         GET     STM32F401CCUx_Driver.s    
                         THUMB
                         ENTRY
-                        EXPORT  __main
-                        
+                        EXPORT  __main                   
 __main
                         bl      ConfigPortA
                         bl      ConfigPortC
