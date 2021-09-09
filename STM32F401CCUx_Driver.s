@@ -70,7 +70,7 @@ ConfigGPIOAIn
                         and     r1,#GPIOA_MODER0_0_LSB
                         str     r1,[r0]
                         pop     {r1-r12,pc}
-ConfigPortCOut            
+ConfigGPIOCOut            
                         push    {r1-r12,lr}
                         ldr     r0,=RCC_AHB1ENR
                         ldr     r1,[r0]
@@ -84,7 +84,7 @@ ConfigPortCOut
                         ldr     r1,[r0]
                         orr     r1,#GPIOC_MODER13_1_LSB
                         str     r1,[r0]
-                        bl      PortCBitSet13
+                        bl      GPIOCBitSet13
                         ldr     r0,=GPIOC_OTYPER
                         ldr     r1,[r0]
                         and     r1,#GPIOC_OTYPER_OT13_0    
@@ -98,14 +98,14 @@ ConfigPortCOut
                         orr     r1,#GPIOC_MODER13_1_LSB
                         str     r1,[r0]
                         pop     {r1-r12,pc}
-PortCBitSet13
+GPIOCBitSet13
                         push    {r1-r12,lr}
                         ldr     r0,=GPIOC_BSRR
                         ldr     r1,[r0]
                         orr     r1,#GPIOC_BSRR_BS13_1    
                         str     r1,[r0]
                         pop     {r1-r12,pc}            
-PortCBitReset13
+GPIOCBitReset13
                         push    {r1-r12,lr}
                         ldr     r0,=GPIOC_BSRR
                         ldr     r1,[r0]

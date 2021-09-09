@@ -28,18 +28,18 @@
                         EXPORT  __main                   
 __main
                         bl      ConfigGPIOAIn
-                        bl      ConfigPortCOut
+                        bl      ConfigGPIOCOut
 MainLoop    
                         bl      PA0ButtonHandler
                         bl      MainLoop
 PA0ButtonHandler                    
                         push    {r1-r12,lr}
-                        bl      PortCBitReset13
+                        bl      GPIOCBitReset13
                         ldr     r0,=GPIOA_IDR    
                         ldr     r1,[r0]
                         and     r1,#GPIOA_IDR0_1
                         cmp     r1,#0
-                        beq     PortCBitSet13
+                        beq     GPIOCBitSet13
                         pop     {r1-r12,pc}
 
                         ALIGN
