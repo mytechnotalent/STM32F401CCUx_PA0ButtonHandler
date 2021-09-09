@@ -23,7 +23,6 @@
 ;// SOFTWARE.
 
                         AREA    STM32F401CCUx_Driver,CODE,READONLY,ALIGN=2
-                        THUMB
 
 RCC_BASE                EQU     0x40023800
 RCC_AHB1ENR_OFFSET      EQU     0x30
@@ -52,5 +51,55 @@ GPIOA_IDR0_1            EQU     1
 GPIOC_BSRR_BS13_1       EQU     1<<13
 GPIOC_BSRR_BR13_1       EQU     1<<29
     
+ConfigPortA                
+                        push    {lr}
+                        ldr     r0,=RCC_AHB1ENR
+                        ldr     r1,[r0]
+                        orr     r1,#RCC_AHB1ENR_GPIOAEN
+                        str     r1,[r0]
+                        ldr     r0,=GPIOA_MODER
+                        ldr     r1,[r0]
+                        and     r1,#GPIOA_MODER0_0_MSB
+                        str     r1,[r0]
+                        ldr     r0,=GPIOA_MODER
+                        ldr     r1,[r0]
+                        and     r1,#GPIOA_MODER0_0_LSB
+                        str     r1,[r0]
+                        pop     {pc}
+ConfigPortC            
+                        push    {lr}
+                        ldr     r0,=RCC_AHB1ENR
+                        ldr     r1,[r0]
+                        orr     r1,#RCC_AHB1ENR_GPIOCEN
+                        str     r1,[r0]
+                        ldr     r0,=GPIOC_MODER
+                        ldr     r1,[r0]
+                        and     r1,#GPIOC_MODER13_0_MSB
+                        str     r1,[r0]
+                        ldr     r0,=GPIOC_MODER
+                        ldr     r1,[r0]
+                        orr     r1,#GPIOC_MODER13_1_LSB
+                        str     r1,[r0]
+                        bl      PortCBitSet13
+                        ldr     r0,=GPIOC_OTYPER
+                        ldr     r1,[r0]
+                        and     r1,#GPIOC_OTYPER_OT13_0    
+                        str     r1,[r0]
+                        pop     {pc}
+PortCBitSet13
+                        push    {lr}
+                        ldr     r0,=GPIOC_BSRR
+                        ldr     r1,[r0]
+                        orr     r1,#GPIOC_BSRR_BS13_1    
+                        str     r1,[r0]
+                        pop     {pc}            
+PortCBitReset13
+                        push    {lr}
+                        ldr     r0,=GPIOC_BSRR
+                        ldr     r1,[r0]
+                        orr     r1,#GPIOC_BSRR_BR13_1
+                        str     r1,[r0]
+                        pop     {pc}    
+						
                         ALIGN
                         END

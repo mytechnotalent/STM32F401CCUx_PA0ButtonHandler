@@ -1,7 +1,0 @@
---target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto -c
--gdwarf-3 -Wa,armasm,--pd,"__EVAL SETA 1"
--I./RTE/_App
--IC:/Users/kevin/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include
--IC:/Users/kevin/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
--Wa,armasm,--pd,"__UVISION_VERSION SETA 535" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"STM32F401xC SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"
--o ./objects/main.o "main.s"
