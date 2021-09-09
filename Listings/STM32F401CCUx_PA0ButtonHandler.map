@@ -25,7 +25,7 @@ Section Cross References
 Removing Unused input sections from the image.
 
     Removing main.o(PA0ButtonHandlerProg), (0 bytes).
-    Removing stm32f401ccux_driver.o(STM32F401CCUx_Driver), (132 bytes).
+    Removing stm32f401ccux_driver.o(STM32F401CCUx_Driver), (156 bytes).
     Removing system_stm32f4xx.o(.text), (0 bytes).
     Removing system_stm32f4xx.o(.ARM.exidx.text.SystemInit), (8 bytes).
     Removing system_stm32f4xx.o(.text.SystemCoreClockUpdate), (126 bytes).
@@ -34,7 +34,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f4xx.o(.rodata.AHBPrescTable), (16 bytes).
     Removing system_stm32f4xx.o(.rodata.APBPrescTable), (8 bytes).
 
-9 unused section(s) (total 302 bytes) removed from the image.
+9 unused section(s) (total 326 bytes) removed from the image.
 
 ==============================================================================
 

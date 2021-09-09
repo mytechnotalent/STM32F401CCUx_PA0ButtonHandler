@@ -37,6 +37,8 @@ GPIOC_MODER_OFFSET      EQU     0x00
 GPIOC_MODER             EQU     GPIOC_BASE + GPIOC_MODER_OFFSET
 GPIOC_OTYPER_OFFSET     EQU     0x04
 GPIOC_OTYPER            EQU     GPIOC_BASE + GPIOC_OTYPER_OFFSET
+GPIOC_OSPEEDR_OFFSET	EQU		0x08
+GPIOC_OSPEEDR           EQU     GPIOC_BASE + GPIOC_OSPEEDR_OFFSET
 GPIOC_BSRR_OFFSET       EQU     0x18    
 GPIOC_BSRR              EQU     GPIOC_BASE + GPIOC_BSRR_OFFSET
 
@@ -44,15 +46,17 @@ RCC_AHB1ENR_GPIOAEN     EQU     1<<0
 RCC_AHB1ENR_GPIOCEN     EQU     1<<2
 GPIOA_MODER0_0_MSB      EQU     ~(0<<0)
 GPIOA_MODER0_0_LSB      EQU     ~(0<<0)
+GPIOA_IDR0_1            EQU     1
 GPIOC_MODER13_0_MSB     EQU     ~(0<<27) 
 GPIOC_MODER13_1_LSB     EQU     1<<26
 GPIOC_OTYPER_OT13_0     EQU     ~(0<<13)
-GPIOA_IDR0_1            EQU     1
+GPIOC_OSPEEDR13_1_MSB   EQU     1<<27
+GPIOC_OSPEEDR13_1_LSB   EQU     1<<26
 GPIOC_BSRR_BS13_1       EQU     1<<13
 GPIOC_BSRR_BR13_1       EQU     1<<29
     
 ConfigPortA                
-                        push    {lr}
+                        push    {r0-r12,lr}
                         ldr     r0,=RCC_AHB1ENR
                         ldr     r1,[r0]
                         orr     r1,#RCC_AHB1ENR_GPIOAEN
@@ -65,7 +69,7 @@ ConfigPortA
                         ldr     r1,[r0]
                         and     r1,#GPIOA_MODER0_0_LSB
                         str     r1,[r0]
-                        pop     {pc}
+                        pop     {r0-r12,pc}
 ConfigPortC            
                         push    {lr}
                         ldr     r0,=RCC_AHB1ENR
@@ -84,6 +88,15 @@ ConfigPortC
                         ldr     r0,=GPIOC_OTYPER
                         ldr     r1,[r0]
                         and     r1,#GPIOC_OTYPER_OT13_0    
+                        str     r1,[r0]
+
+                        ldr     r0,=GPIOC_OSPEEDR
+                        ldr     r1,[r0]
+                        and     r1,#GPIOC_MODER13_0_MSB
+                        str     r1,[r0]
+                        ldr     r0,=GPIOC_MODER
+                        ldr     r1,[r0]
+                        orr     r1,#GPIOC_MODER13_1_LSB
                         str     r1,[r0]
                         pop     {pc}
 PortCBitSet13
