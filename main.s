@@ -27,20 +27,20 @@
                         ENTRY
                         EXPORT  __main                   
 __main
-                        bl      ConfigPortA
-                        bl      ConfigPortC
+                        bl      ConfigGPIOAIn
+                        bl      ConfigPortCOut
 MainLoop    
                         bl      PA0ButtonHandler
                         bl      MainLoop
 PA0ButtonHandler                    
-                        push    {lr}
+                        push    {r1-r12,lr}
                         bl      PortCBitReset13
                         ldr     r0,=GPIOA_IDR    
                         ldr     r1,[r0]
                         and     r1,#GPIOA_IDR0_1
                         cmp     r1,#0
                         beq     PortCBitSet13
-                        pop     {pc}
+                        pop     {r1-r12,pc}
 
                         ALIGN
                         END

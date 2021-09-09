@@ -54,9 +54,9 @@ GPIOC_OSPEEDR13_1_MSB   EQU     1<<27
 GPIOC_OSPEEDR13_1_LSB   EQU     1<<26
 GPIOC_BSRR_BS13_1       EQU     1<<13
 GPIOC_BSRR_BR13_1       EQU     1<<29
-    
-ConfigPortA                
-                        push    {r0-r12,lr}
+
+ConfigGPIOAIn                
+                        push    {r1-r12,lr}
                         ldr     r0,=RCC_AHB1ENR
                         ldr     r1,[r0]
                         orr     r1,#RCC_AHB1ENR_GPIOAEN
@@ -69,9 +69,9 @@ ConfigPortA
                         ldr     r1,[r0]
                         and     r1,#GPIOA_MODER0_0_LSB
                         str     r1,[r0]
-                        pop     {r0-r12,pc}
-ConfigPortC            
-                        push    {lr}
+                        pop     {r1-r12,pc}
+ConfigPortCOut            
+                        push    {r1-r12,lr}
                         ldr     r0,=RCC_AHB1ENR
                         ldr     r1,[r0]
                         orr     r1,#RCC_AHB1ENR_GPIOCEN
@@ -89,7 +89,6 @@ ConfigPortC
                         ldr     r1,[r0]
                         and     r1,#GPIOC_OTYPER_OT13_0    
                         str     r1,[r0]
-
                         ldr     r0,=GPIOC_OSPEEDR
                         ldr     r1,[r0]
                         and     r1,#GPIOC_MODER13_0_MSB
@@ -98,21 +97,21 @@ ConfigPortC
                         ldr     r1,[r0]
                         orr     r1,#GPIOC_MODER13_1_LSB
                         str     r1,[r0]
-                        pop     {pc}
+                        pop     {r1-r12,pc}
 PortCBitSet13
-                        push    {lr}
+                        push    {r1-r12,lr}
                         ldr     r0,=GPIOC_BSRR
                         ldr     r1,[r0]
                         orr     r1,#GPIOC_BSRR_BS13_1    
                         str     r1,[r0]
-                        pop     {pc}            
+                        pop     {r1-r12,pc}            
 PortCBitReset13
-                        push    {lr}
+                        push    {r1-r12,lr}
                         ldr     r0,=GPIOC_BSRR
                         ldr     r1,[r0]
                         orr     r1,#GPIOC_BSRR_BR13_1
                         str     r1,[r0]
-                        pop     {pc}    
+                        pop     {r1-r12,pc}    
 						
                         ALIGN
                         END
