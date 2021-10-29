@@ -2,7 +2,7 @@
 ;//
 ;// Developer: Kevin Thomas
 ;//
-;// Copyright (c) 2021 My Techno Talent, LLC
+;// Copyright (c) 2021 My Techno Talent
 ;//
 ;// Permission is hereby granted, free of charge, to any person obtaining a copy
 ;// of this software and associated documentation files (the "Software"), to deal
